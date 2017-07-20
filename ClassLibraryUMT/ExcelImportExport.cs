@@ -7,6 +7,15 @@ using System.Data;
 using System.Data.Odbc;
 using System.Xml;
 using System.IO;
+using unoidl.com.sun.star.lang;
+using unoidl.com.sun.star.frame;
+using unoidl.com.sun.star.beans;
+using unoidl.com.sun.star.sheet;
+using unoidl.com.sun.star.container;
+using unoidl.com.sun.star.table;
+using unoidl.com.sun.star.text;
+using unoidl.com.sun.star.uno;
+using unoidl.com.sun.star.accessibility;
 
 namespace ClassLibraryUMT
 {
@@ -37,7 +46,7 @@ namespace ClassLibraryUMT
 
                 }
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw ex;
             }
@@ -210,7 +219,52 @@ namespace ClassLibraryUMT
         }
         #endregion
         #region export
-       
+       public static void exportExcelLO(string FileName, DataSet ds)
+        {
+                       
+                XComponentContext oStrap = uno.util.Bootstrap.bootstrap();
+                XMultiServiceFactory oServMan = (XMultiServiceFactory)oStrap.getServiceManager();
+                XComponentLoader desktop = (XComponentLoader)oServMan.createInstance("com.sun.star.frame.Desktop");
+                string url = @"private:factory/scalc";
+                PropertyValue[] loadProps = new PropertyValue[3];
+                loadProps[0] = new PropertyValue();
+                loadProps[0].Name = "Hidden";
+                loadProps[0].Value = new uno.Any(true);
+                loadProps[1] = new PropertyValue();
+                loadProps[1].Name = "FilterName";
+                loadProps[1].Value = new uno.Any("MS Excel 97");
+                loadProps[2] = new PropertyValue();
+                loadProps[2].Name = "ReadOnly";
+                loadProps[2].Value = new uno.Any(false);
+                XComponent document = desktop.loadComponentFromURL(url, "_blank", 0, loadProps);
+                XSpreadsheets oSheets = ((XSpreadsheetDocument)document).getSheets();
+                XIndexAccess oSheetsIA = (XIndexAccess)oSheets;
+                XSpreadsheet sheet = (XSpreadsheet)oSheetsIA.getByIndex(0).Value;
+                int ii = 0; XCell celija = null;
+                foreach (DataColumn kol in ds.Tables[0].Columns)
+                {
+                    celija = sheet.getCellByPosition(ii, 0);
+                    ((XText)celija).setString(kol.ColumnName);
+                    ((XPropertySet)celija).setPropertyValue("CellBackColor", new uno.Any(654321));
+                    ((XPropertySet)celija).setPropertyValue("CharColor", new uno.Any(333444));
+                    ii++;
+                }
+                ds.Tables[0].AcceptChanges(); ii = 0;
+                foreach (DataRow red in ds.Tables[0].Rows)
+                {
+                    int jj = 0; ii++;
+                    foreach (object ob in red.ItemArray)
+                    {
+                        celija = sheet.getCellByPosition(jj, ii);
+                        ((XText)celija).setString(ob.ToString());
+                        ((XPropertySet)celija).setPropertyValue("CellBackColor", new uno.Any(888777));
+                        jj++;
+                    }
+                }
+                ((XStorable)document).storeToURL("file:///" + FileName.Replace(@"\", "/"), loadProps);
+                System.Diagnostics.Process.Start(FileName);
+            
+        }
         #endregion
 
     }
