@@ -55,7 +55,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(876, 638);
+            this.tabControl1.Size = new System.Drawing.Size(891, 542);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageExcel
@@ -65,7 +65,7 @@
             this.tabPageExcel.Location = new System.Drawing.Point(4, 23);
             this.tabPageExcel.Name = "tabPageExcel";
             this.tabPageExcel.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageExcel.Size = new System.Drawing.Size(868, 611);
+            this.tabPageExcel.Size = new System.Drawing.Size(883, 515);
             this.tabPageExcel.TabIndex = 0;
             this.tabPageExcel.Text = "Excel Import - Export";
             // 
@@ -85,8 +85,8 @@
             // 
             this.splitContainerExcel.Panel2.Controls.Add(this.btnExport);
             this.splitContainerExcel.Panel2.Controls.Add(this.btnImport);
-            this.splitContainerExcel.Size = new System.Drawing.Size(862, 605);
-            this.splitContainerExcel.SplitterDistance = 523;
+            this.splitContainerExcel.Size = new System.Drawing.Size(877, 509);
+            this.splitContainerExcel.SplitterDistance = 427;
             this.splitContainerExcel.TabIndex = 0;
             // 
             // dgWorkbook
@@ -96,13 +96,13 @@
             this.dgWorkbook.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.dgWorkbook.Location = new System.Drawing.Point(0, 0);
             this.dgWorkbook.Name = "dgWorkbook";
-            this.dgWorkbook.Size = new System.Drawing.Size(862, 523);
+            this.dgWorkbook.Size = new System.Drawing.Size(877, 427);
             this.dgWorkbook.TabIndex = 0;
             // 
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExport.Location = new System.Drawing.Point(697, 16);
+            this.btnExport.Location = new System.Drawing.Point(712, 16);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(151, 36);
             this.btnExport.TabIndex = 1;
@@ -135,15 +135,15 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(876, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(891, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 640);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 544);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(876, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(891, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -151,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 662);
+            this.ClientSize = new System.Drawing.Size(891, 566);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
