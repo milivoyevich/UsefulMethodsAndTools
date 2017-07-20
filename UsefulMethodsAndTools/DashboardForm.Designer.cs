@@ -30,13 +30,13 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageExcel = new System.Windows.Forms.TabPage();
+            this.splitContainerExcel = new System.Windows.Forms.SplitContainer();
+            this.dgWorkbook = new System.Windows.Forms.DataGrid();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.splitContainerExcel = new System.Windows.Forms.SplitContainer();
-            this.dgWorkbook = new System.Windows.Forms.DataGrid();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
             this.ofdExcel = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPageExcel.SuspendLayout();
@@ -55,7 +55,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(870, 516);
+            this.tabControl1.Size = new System.Drawing.Size(876, 638);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageExcel
@@ -65,35 +65,9 @@
             this.tabPageExcel.Location = new System.Drawing.Point(4, 23);
             this.tabPageExcel.Name = "tabPageExcel";
             this.tabPageExcel.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageExcel.Size = new System.Drawing.Size(862, 489);
+            this.tabPageExcel.Size = new System.Drawing.Size(868, 611);
             this.tabPageExcel.TabIndex = 0;
             this.tabPageExcel.Text = "Excel Import - Export";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 23);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(748, 442);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(870, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 518);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(870, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // splitContainerExcel
             // 
@@ -111,8 +85,8 @@
             // 
             this.splitContainerExcel.Panel2.Controls.Add(this.btnExport);
             this.splitContainerExcel.Panel2.Controls.Add(this.btnImport);
-            this.splitContainerExcel.Size = new System.Drawing.Size(856, 483);
-            this.splitContainerExcel.SplitterDistance = 401;
+            this.splitContainerExcel.Size = new System.Drawing.Size(862, 605);
+            this.splitContainerExcel.SplitterDistance = 523;
             this.splitContainerExcel.TabIndex = 0;
             // 
             // dgWorkbook
@@ -122,8 +96,19 @@
             this.dgWorkbook.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.dgWorkbook.Location = new System.Drawing.Point(0, 0);
             this.dgWorkbook.Name = "dgWorkbook";
-            this.dgWorkbook.Size = new System.Drawing.Size(856, 401);
+            this.dgWorkbook.Size = new System.Drawing.Size(862, 523);
             this.dgWorkbook.TabIndex = 0;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.Location = new System.Drawing.Point(697, 16);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(151, 36);
+            this.btnExport.TabIndex = 1;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnImport
             // 
@@ -136,22 +121,37 @@
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
-            // btnExport
+            // tabPage2
             // 
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExport.Location = new System.Drawing.Point(691, 16);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(151, 36);
-            this.btnExport.TabIndex = 1;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(862, 489);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(876, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 640);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(876, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 540);
+            this.ClientSize = new System.Drawing.Size(876, 662);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);

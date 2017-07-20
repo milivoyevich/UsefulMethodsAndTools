@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExternLibs\ExcelLibrary.dll" />
+    <Content Include="ExternLibs\TextFile1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
