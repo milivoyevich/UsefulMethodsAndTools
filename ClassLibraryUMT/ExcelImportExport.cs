@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Odbc;
 using System.Xml;
 using System.IO;
+using System.Reflection;
 using unoidl.com.sun.star.lang;
 using unoidl.com.sun.star.frame;
 using unoidl.com.sun.star.beans;
@@ -16,6 +17,7 @@ using unoidl.com.sun.star.table;
 using unoidl.com.sun.star.text;
 using unoidl.com.sun.star.uno;
 using unoidl.com.sun.star.accessibility;
+using System.Text.RegularExpressions;
 
 namespace ClassLibraryUMT
 {
@@ -221,7 +223,14 @@ namespace ClassLibraryUMT
         #region export
        public static void exportExcelLO(string FileName, DataSet ds)
         {
-                       
+            try
+            {
+
+                string unoPath = @"C:\Program Files (x86)\LibreOffice 5\program";
+                Environment.SetEnvironmentVariable("UNO_PATH", unoPath, EnvironmentVariableTarget.Process);
+                Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH") + @";"
+                                                   + unoPath, EnvironmentVariableTarget.Process);
+
                 XComponentContext oStrap = uno.util.Bootstrap.bootstrap();
                 XMultiServiceFactory oServMan = (XMultiServiceFactory)oStrap.getServiceManager();
                 XComponentLoader desktop = (XComponentLoader)oServMan.createInstance("com.sun.star.frame.Desktop");
@@ -245,8 +254,8 @@ namespace ClassLibraryUMT
                 {
                     celija = sheet.getCellByPosition(ii, 0);
                     ((XText)celija).setString(kol.ColumnName);
-                    ((XPropertySet)celija).setPropertyValue("CellBackColor", new uno.Any(654321));
-                    ((XPropertySet)celija).setPropertyValue("CharColor", new uno.Any(333444));
+                    //((XPropertySet)celija).setPropertyValue("CellBackColor", new uno.Any(654321));
+                    //((XPropertySet)celija).setPropertyValue("CharColor", new uno.Any(333444));
                     ii++;
                 }
                 ds.Tables[0].AcceptChanges(); ii = 0;
@@ -257,13 +266,17 @@ namespace ClassLibraryUMT
                     {
                         celija = sheet.getCellByPosition(jj, ii);
                         ((XText)celija).setString(ob.ToString());
-                        ((XPropertySet)celija).setPropertyValue("CellBackColor", new uno.Any(888777));
+                        //((XPropertySet)celija).setPropertyValue("CellBackColor", new uno.Any(888777));
                         jj++;
                     }
                 }
                 ((XStorable)document).storeToURL("file:///" + FileName.Replace(@"\", "/"), loadProps);
                 System.Diagnostics.Process.Start(FileName);
-            
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
         #endregion
 

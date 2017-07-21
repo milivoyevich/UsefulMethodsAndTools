@@ -43,7 +43,21 @@ namespace UsefulMethodsAndTools
                             string sred = string.Empty;
                             foreach (object polje in red.ItemArray)
                             {
-                                sred = sred + polje.ToString().Trim();
+                                sred = sred + polje.ToString().Trim();                                
+                            }
+                            foreach(DataColumn kolona in tabela.Columns)
+                            {
+                                if (red[kolona].ToString() == string.Empty)
+                                {
+                                    switch (kolona.DataType.Name)
+                                    {
+                                        case "String":  red[kolona] = ""; break;
+                                        case "DateTime": red[kolona] = DateTime.Today; break;
+                                        case "Boolean": red[kolona] = false; break;
+                                        default: red[kolona] = 0; break;
+                                    }
+                                    
+                                }
                             }
                             if (sred.Trim() == string.Empty) red.Delete();
                         }
@@ -69,7 +83,8 @@ namespace UsefulMethodsAndTools
                     sd.FileName = ds.DataSetName;
                     sd.Filter = "Excel files|*.xls";
                     if(sd.ShowDialog()==DialogResult.OK)
-                    {                     
+                    {
+                        ds.AcceptChanges();
                         DataSetHelper.CreateWorkbook(sd.FileName, ds);
                     }
                     
@@ -81,6 +96,52 @@ namespace UsefulMethodsAndTools
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void btnExportLO_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var sd = new SaveFileDialog())
+                {
+                    var ds = (DataSet)dgWorkbook.DataSource;
+                    sd.FileName = ds.DataSetName;
+                    sd.Filter = "Excel files|*.xls";
+                    if (sd.ShowDialog() == DialogResult.OK)
+                    {                    
+                        ExcelImportExport.exportExcelLO(sd.FileName, ds);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private string orignalText=string.Empty;
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (rbOriginal.Checked)
+            {
+                orignalText = richTextBox1.Text;
+            }
+        }
+
+        private void rbOriginal_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbOriginal.Checked)
+            {
+                richTextBox1.Text = orignalText;
+            }
+        }
+
+        private void rbLatin_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbLatin.Checked)
+            {
+               richTextBox1.Text= ClassUMT.CyrlToLatn(orignalText);
+            }
         }
     }
 }
