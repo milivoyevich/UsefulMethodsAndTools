@@ -40,13 +40,17 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.rbLatin = new System.Windows.Forms.RadioButton();
             this.rbOriginal = new System.Windows.Forms.RadioButton();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.ofdExcel = new System.Windows.Forms.OpenFileDialog();
             this.tpDtoToPoco = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.rtbPoco = new System.Windows.Forms.RichTextBox();
             this.btnChoose = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ofdExcel = new System.Windows.Forms.OpenFileDialog();
+            this.dataGrid1 = new System.Windows.Forms.DataGrid();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.btnSaveData = new System.Windows.Forms.Button();
+            this.dsTest1 = new ClassLibraryUMT.dsTest();
             this.tcMain.SuspendLayout();
             this.tpExcel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerExcel)).BeginInit();
@@ -64,6 +68,12 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsTest1)).BeginInit();
             this.SuspendLayout();
             // 
             // tcMain
@@ -220,22 +230,6 @@
             this.rbOriginal.UseVisualStyleBackColor = true;
             this.rbOriginal.CheckedChanged += new System.EventHandler(this.rbOriginal_CheckedChanged);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(891, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 544);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(891, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
             // tpDtoToPoco
             // 
             this.tpDtoToPoco.BackColor = System.Drawing.Color.Honeydew;
@@ -256,10 +250,11 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.rtbPoco);
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.btnSaveData);
             this.splitContainer2.Panel2.Controls.Add(this.btnChoose);
             this.splitContainer2.Size = new System.Drawing.Size(883, 515);
             this.splitContainer2.SplitterDistance = 434;
@@ -270,7 +265,7 @@
             this.rtbPoco.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbPoco.Location = new System.Drawing.Point(0, 0);
             this.rtbPoco.Name = "rtbPoco";
-            this.rtbPoco.Size = new System.Drawing.Size(883, 434);
+            this.rtbPoco.Size = new System.Drawing.Size(268, 434);
             this.rtbPoco.TabIndex = 0;
             this.rtbPoco.Text = "";
             // 
@@ -284,6 +279,66 @@
             this.btnChoose.Text = "Choose a DataSet";
             this.btnChoose.UseVisualStyleBackColor = true;
             this.btnChoose.Click += new System.EventHandler(this.btnChoose_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(891, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 544);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(891, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // dataGrid1
+            // 
+            this.dataGrid1.DataMember = "dtAddresssBook";
+            this.dataGrid1.DataSource = this.dsTest1;
+            this.dataGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.dataGrid1.Location = new System.Drawing.Point(0, 0);
+            this.dataGrid1.Name = "dataGrid1";
+            this.dataGrid1.Size = new System.Drawing.Size(611, 434);
+            this.dataGrid1.TabIndex = 1;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.rtbPoco);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.dataGrid1);
+            this.splitContainer3.Size = new System.Drawing.Size(883, 434);
+            this.splitContainer3.SplitterDistance = 268;
+            this.splitContainer3.TabIndex = 2;
+            // 
+            // btnSaveData
+            // 
+            this.btnSaveData.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSaveData.Location = new System.Drawing.Point(517, 18);
+            this.btnSaveData.Name = "btnSaveData";
+            this.btnSaveData.Size = new System.Drawing.Size(131, 30);
+            this.btnSaveData.TabIndex = 1;
+            this.btnSaveData.Text = "Save Data";
+            this.btnSaveData.UseVisualStyleBackColor = true;
+            this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
+            // 
+            // dsTest1
+            // 
+            this.dsTest1.DataSetName = "dsTest";
+            this.dsTest1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // DashboardForm
             // 
@@ -299,6 +354,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DashboardForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.DashboardForm_Load);
             this.tcMain.ResumeLayout(false);
             this.tpExcel.ResumeLayout(false);
             this.splitContainerExcel.Panel1.ResumeLayout(false);
@@ -317,6 +373,12 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dsTest1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,5 +405,9 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.RichTextBox rtbPoco;
         private System.Windows.Forms.Button btnChoose;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.DataGrid dataGrid1;
+        private System.Windows.Forms.Button btnSaveData;
+        private ClassLibraryUMT.dsTest dsTest1;
     }
 }

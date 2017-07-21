@@ -84,15 +84,20 @@ namespace ClassLibraryUMT
         public static T2 MapirajMe<T1,T2>(this T1 ulaz)
         {
             var vrati = default(T2);
-
-            var config = new MapperConfiguration(cfg =>
+            try
             {
-                cfg.CreateMap<T1, T2>();              
-            });
-            config.AssertConfigurationIsValid();
-            var mapper = config.CreateMapper();
-            vrati = mapper.Map<T1, T2>(ulaz);
-            
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<T1, T2>();
+                });
+                config.AssertConfigurationIsValid();
+                var mapper = config.CreateMapper();
+                vrati = mapper.Map<T1, T2>(ulaz);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
             return vrati;
         }
 

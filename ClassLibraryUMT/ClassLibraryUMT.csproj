@@ -68,7 +68,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cAddress.cs" />
     <Compile Include="ClassUMT.cs" />
+    <Compile Include="dsTest.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTest.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ExcelImportExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -80,6 +86,19 @@
     <Content Include="ExternLibs\cli_oootypes.dll" />
     <Content Include="ExternLibs\cli_ure.dll" />
     <Content Include="ExternLibs\cli_uretypes.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dsTest.xsc">
+      <DependentUpon>dsTest.xsd</DependentUpon>
+    </None>
+    <None Include="dsTest.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTest.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dsTest.xss">
+      <DependentUpon>dsTest.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
