@@ -141,6 +141,26 @@ namespace UsefulMethodsAndTools
             if(rbLatin.Checked)
             {
                richTextBox1.Text= ClassUMT.CyrlToLatn(orignalText);
+                string ppp = string.Empty;
+                
+            }
+        }
+
+        private void btnChoose_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var ofd = new OpenFileDialog();
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    var ds = new DataSet();
+                    ds.ReadXml(ofd.FileName);
+                    rtbPoco.Text = ClassUMT.DtoToPoco(ds);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

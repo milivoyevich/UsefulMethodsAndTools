@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternLibs\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="cli_basetypes, Version=1.0.19.0, Culture=neutral, PublicKeyToken=ce2cb7e279207b9e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\LibreOffice 5\sdk\cli\cli_basetypes.dll</HintPath>
@@ -69,6 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ExternLibs\AutoMapper.dll" />
     <Content Include="ExternLibs\ExcelLibrary.dll" />
     <Content Include="ExternLibs\cli_basetypes.dll" />
     <Content Include="ExternLibs\cli_cppuhelper.dll" />

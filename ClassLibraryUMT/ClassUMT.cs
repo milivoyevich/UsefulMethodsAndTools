@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using System.Data;
 
 namespace ClassLibraryUMT
 {
@@ -79,5 +81,42 @@ namespace ClassLibraryUMT
             return lokal_txt;
         }
 
+        public static T2 MapirajMe<T1,T2>(this T1 ulaz)
+        {
+            var vrati = default(T2);
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<T1, T2>();              
+            });
+            config.AssertConfigurationIsValid();
+            var mapper = config.CreateMapper();
+            vrati = mapper.Map<T1, T2>(ulaz);
+            
+            return vrati;
+        }
+
+        public static string DtoToPoco(DataSet ds)
+        {
+            var objekat = string.Empty;
+
+            objekat += "namespace "+ds.DataSetName + Environment.NewLine;
+            objekat += "{" + Environment.NewLine;
+            foreach (DataTable tabela in ds.Tables)
+            {
+                objekat += Environment.NewLine;
+                objekat += "public class " + tabela.TableName + Environment.NewLine;
+                objekat += "{" + Environment.NewLine;
+                foreach (DataColumn kolona in tabela.Columns)
+                {
+                    objekat += "public " + kolona.DataType.Name + " " + kolona.ColumnName + " {get; set;}" + Environment.NewLine;
+                }
+                objekat += "}" + Environment.NewLine;
+            }
+            objekat += "}" + Environment.NewLine;
+
+            return objekat;
+        }
     }
+
 }
