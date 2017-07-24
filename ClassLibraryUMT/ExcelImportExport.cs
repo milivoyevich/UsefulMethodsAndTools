@@ -38,9 +38,10 @@ namespace ClassLibraryUMT
                     {
                         string sheet = row["TABLE_NAME"].ToString();
 
-                        var cmd = new OdbcCommand("SELECT * FROM [" + sheet + "]", conn);
-                        cmd.CommandType = CommandType.Text;
-
+                        var cmd = new OdbcCommand("SELECT * FROM [" + sheet + "]", conn)
+                        {
+                            CommandType = CommandType.Text
+                        };
                         DataTable outputTable = new DataTable(sheet);
                         output.Tables.Add(outputTable);
                         new OdbcDataAdapter(cmd).Fill(outputTable);
@@ -95,7 +96,7 @@ namespace ClassLibraryUMT
                             if (cell.Attributes["ss:Index"] != null)
                                 actualCellIndex = int.Parse(cell.Attributes["ss:Index"].Value) - 1;
 
-                            ColumnType autoDetectType = getType(cell.SelectSingleNode("ss:Data", nsmgr));
+                            ColumnType autoDetectType = GetType(cell.SelectSingleNode("ss:Data", nsmgr));
 
                             if (actualCellIndex >= dt.Columns.Count)
                             {
@@ -129,9 +130,9 @@ namespace ClassLibraryUMT
                                 for (int ii = dt.Columns.Count; ii < actualCellIndex; ii++)
                                 {
                                     dt.Columns.Add("Column" + actualCellIndex.ToString(), typeof(string));
-                                    columns.Add(getDefaultType());
+                                    columns.Add(GetDefaultType());
                                 }
-                                ColumnType autoDetectType = getType(cell.SelectSingleNode("ss:Data", nsmgr));
+                                ColumnType autoDetectType = GetType(cell.SelectSingleNode("ss:Data", nsmgr));
                                 dt.Columns.Add("Column" + actualCellIndex.ToString(), typeof(string));
                                 columns.Add(autoDetectType);
                             }
@@ -161,12 +162,12 @@ namespace ClassLibraryUMT
             //</Workbook>
         }
 
-        private static ColumnType getDefaultType()
+        private static ColumnType GetDefaultType()
         {
             return new ColumnType(typeof(String));
         }
 
-        private static ColumnType getType(XmlNode data)
+        private static ColumnType GetType(XmlNode data)
         {
             string type = null;
             if (data.Attributes["ss:Type"] == null || data.Attributes["ss:Type"].Value == null)
@@ -221,7 +222,7 @@ namespace ClassLibraryUMT
         }
         #endregion
         #region export
-       public static void exportExcelLO(string FileName, DataSet ds)
+       public static void ExportExcelLO(string FileName, DataSet ds)
         {
             try
             {
@@ -236,15 +237,24 @@ namespace ClassLibraryUMT
                 XComponentLoader desktop = (XComponentLoader)oServMan.createInstance("com.sun.star.frame.Desktop");
                 string url = @"private:factory/scalc";
                 PropertyValue[] loadProps = new PropertyValue[3];
-                loadProps[0] = new PropertyValue();
-                loadProps[0].Name = "Hidden";
-                loadProps[0].Value = new uno.Any(true);
-                loadProps[1] = new PropertyValue();
-                loadProps[1].Name = "FilterName";
-                loadProps[1].Value = new uno.Any("MS Excel 97");
-                loadProps[2] = new PropertyValue();
-                loadProps[2].Name = "ReadOnly";
-                loadProps[2].Value = new uno.Any(false);
+                loadProps[0] = new PropertyValue()
+                {
+                    Name = "Hidden",
+                    Value = new uno.Any(true)
+                };
+
+                loadProps[1] = new PropertyValue()
+                {
+                    Name = "FilterName",
+                    Value = new uno.Any("MS Excel 97")
+                };
+
+                loadProps[2] = new PropertyValue()
+                {
+                    Name = "ReadOnly",
+                    Value = new uno.Any(false)
+                };
+                
                 XComponent document = desktop.loadComponentFromURL(url, "_blank", 0, loadProps);
                 XSpreadsheets oSheets = ((XSpreadsheetDocument)document).getSheets();
                 XIndexAccess oSheetsIA = (XIndexAccess)oSheets;

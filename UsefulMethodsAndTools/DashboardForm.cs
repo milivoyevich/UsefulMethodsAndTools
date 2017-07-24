@@ -20,7 +20,9 @@ namespace UsefulMethodsAndTools
             InitializeComponent();
         }
 
-        private void btnImport_Click(object sender, EventArgs e)
+        BindingList<ClassAddress> ListaAdresa = new BindingList<ClassAddress>();
+
+        private void BtnImport_Click(object sender, EventArgs e)
         {
             var ds = default(DataSet);
             dgWorkbook.DataSource = ds;
@@ -73,7 +75,7 @@ namespace UsefulMethodsAndTools
             }
         }
 
-        private void btnExport_Click(object sender, EventArgs e)
+        private void BtnExport_Click(object sender, EventArgs e)
         {
             try
             {
@@ -98,7 +100,7 @@ namespace UsefulMethodsAndTools
             
         }
 
-        private void btnExportLO_Click(object sender, EventArgs e)
+        private void BtnExportLO_Click(object sender, EventArgs e)
         {
             try
             {
@@ -109,7 +111,7 @@ namespace UsefulMethodsAndTools
                     sd.Filter = "Excel files|*.xls";
                     if (sd.ShowDialog() == DialogResult.OK)
                     {                    
-                        ExcelImportExport.exportExcelLO(sd.FileName, ds);
+                        ExcelImportExport.ExportExcelLO(sd.FileName, ds);
                     }
                 }
             }
@@ -120,33 +122,33 @@ namespace UsefulMethodsAndTools
         }
 
         private string orignalText=string.Empty;
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
-            if (rbOriginal.Checked)
+            if (RbOriginal.Checked)
             {
-                orignalText = richTextBox1.Text;
+                orignalText = RichTextBox1.Text;
             }
         }
 
-        private void rbOriginal_CheckedChanged(object sender, EventArgs e)
+        private void RbOriginal_CheckedChanged(object sender, EventArgs e)
         {
-            if(rbOriginal.Checked)
+            if(RbOriginal.Checked)
             {
-                richTextBox1.Text = orignalText;
+                RichTextBox1.Text = orignalText;
             }
         }
 
-        private void rbLatin_CheckedChanged(object sender, EventArgs e)
+        private void RbLatin_CheckedChanged(object sender, EventArgs e)
         {
-            if(rbLatin.Checked)
+            if(RbLatin.Checked)
             {
-               richTextBox1.Text= ClassUMT.CyrlToLatn(orignalText);
+               RichTextBox1.Text= ClassUMT.CyrlToLatn(orignalText);
                 string ppp = string.Empty;
                 
             }
         }
 
-        private void btnChoose_Click(object sender, EventArgs e)
+        private void BtnChoose_Click(object sender, EventArgs e)
         {
             try
             {
@@ -164,24 +166,62 @@ namespace UsefulMethodsAndTools
             }
         }
 
-        private void btnSaveData_Click(object sender, EventArgs e)
+        private void BtnSaveData_Click(object sender, EventArgs e)
         {
-           dsTest1.WriteXml("Address.xml");
+           dsTest1.WriteXml("Address.xml"); //data
+           dsTest1.WriteXmlSchema("Address.xsd"); //shema
         }
 
         private void DashboardForm_Load(object sender, EventArgs e)
         {
             try
             {
+              
                 if (File.Exists("Address.xml"))
                 {
                     dsTest1.ReadXml("Address.xml");
-                    var ListaAdresa = new BindingList<cAddress>();
+                
                     foreach (var red in dsTest1.dtAddresssBook)
                     {
-                        ListaAdresa.Add(red.MapirajMe<dsTest.dtAddresssBookRow, cAddress>());
+                        ListaAdresa.Add(red.MapirajMe<dsTest.dtAddresssBookRow, ClassAddress>());
                     }
                     dataGrid1.DataSource = ListaAdresa;
+                }
+                else
+                {
+                    ListaAdresa.Add(new ClassAddress {
+                        Id = 1,
+                        Firstname = "Sima",
+                        Surname = "Strahota",
+                        Address = "Puste barake 1",
+                        Birthday = new DateTime(1976, 10, 8),
+                        Phone = "064/789"
+                    });
+                    ListaAdresa.Add(new ClassAddress
+                    {
+                        Id = 2,
+                        Firstname = "Pera",
+                        Surname = "Detlic",
+                        Address = "Shumatovacka bb",
+                        Birthday = new DateTime(1969, 12, 3),
+                        Phone = "065/789"
+                    });
+                    ListaAdresa.Add(new ClassAddress
+                    {
+                        Id = 3,
+                        Firstname = "Dusko",
+                        Surname = "Dugousko",
+                        Address = "Rupcine 123",
+                        Birthday = new DateTime(1967, 2, 20),
+                        Phone = "066/789"
+                    });
+                    
+                    foreach(var red in ListaAdresa)
+                    {                     
+                        dsTest1.dtAddresssBook.Rows.Add(ClassUMT.PocoToDtoData(dsTest1.dtAddresssBook.NewRow(),red));
+                    }
+                    dsTest1.AcceptChanges();
+                    dataGrid1.DataSource = dsTest1.dtAddresssBook;
                 }
             }
             catch(Exception ex)
