@@ -141,6 +141,52 @@ namespace UsefulMethodsAndTools
             if(rbLatin.Checked)
             {
                richTextBox1.Text= ClassUMT.CyrlToLatn(orignalText);
+                string ppp = string.Empty;
+                
+            }
+        }
+
+        private void btnChoose_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var ofd = new OpenFileDialog();
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    var ds = new DataSet();
+                    ds.ReadXml(ofd.FileName);
+                    rtbPoco.Text = ClassUMT.DtoToPoco(ds);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSaveData_Click(object sender, EventArgs e)
+        {
+           dsTest1.WriteXml("Address.xml");
+        }
+
+        private void DashboardForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (File.Exists("Address.xml"))
+                {
+                    dsTest1.ReadXml("Address.xml");
+                    var ListaAdresa = new BindingList<cAddress>();
+                    foreach (var red in dsTest1.dtAddresssBook)
+                    {
+                        ListaAdresa.Add(red.MapirajMe<dsTest.dtAddresssBookRow, cAddress>());
+                    }
+                    dataGrid1.DataSource = ListaAdresa;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternLibs\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="cli_basetypes, Version=1.0.19.0, Culture=neutral, PublicKeyToken=ce2cb7e279207b9e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\LibreOffice 5\sdk\cli\cli_basetypes.dll</HintPath>
@@ -64,17 +68,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cAddress.cs" />
     <Compile Include="ClassUMT.cs" />
+    <Compile Include="dsTest.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTest.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ExcelImportExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ExternLibs\AutoMapper.dll" />
     <Content Include="ExternLibs\ExcelLibrary.dll" />
     <Content Include="ExternLibs\cli_basetypes.dll" />
     <Content Include="ExternLibs\cli_cppuhelper.dll" />
     <Content Include="ExternLibs\cli_oootypes.dll" />
     <Content Include="ExternLibs\cli_ure.dll" />
     <Content Include="ExternLibs\cli_uretypes.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dsTest.xsc">
+      <DependentUpon>dsTest.xsd</DependentUpon>
+    </None>
+    <None Include="dsTest.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTest.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dsTest.xss">
+      <DependentUpon>dsTest.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

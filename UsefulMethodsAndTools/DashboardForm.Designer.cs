@@ -32,17 +32,25 @@
             this.tpExcel = new System.Windows.Forms.TabPage();
             this.splitContainerExcel = new System.Windows.Forms.SplitContainer();
             this.dgWorkbook = new System.Windows.Forms.DataGrid();
+            this.btnExportLO = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.tpLanguage = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rbLatin = new System.Windows.Forms.RadioButton();
+            this.rbOriginal = new System.Windows.Forms.RadioButton();
+            this.tpDtoToPoco = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.rtbPoco = new System.Windows.Forms.RichTextBox();
+            this.btnChoose = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ofdExcel = new System.Windows.Forms.OpenFileDialog();
-            this.btnExportLO = new System.Windows.Forms.Button();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.rbOriginal = new System.Windows.Forms.RadioButton();
-            this.rbLatin = new System.Windows.Forms.RadioButton();
+            this.dataGrid1 = new System.Windows.Forms.DataGrid();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.btnSaveData = new System.Windows.Forms.Button();
+            this.dsTest1 = new ClassLibraryUMT.dsTest();
             this.tcMain.SuspendLayout();
             this.tpExcel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerExcel)).BeginInit();
@@ -55,12 +63,24 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tpDtoToPoco.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsTest1)).BeginInit();
             this.SuspendLayout();
             // 
             // tcMain
             // 
             this.tcMain.Controls.Add(this.tpExcel);
             this.tcMain.Controls.Add(this.tpLanguage);
+            this.tcMain.Controls.Add(this.tpDtoToPoco);
             this.tcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcMain.Location = new System.Drawing.Point(0, 24);
             this.tcMain.Name = "tcMain";
@@ -110,6 +130,17 @@
             this.dgWorkbook.Size = new System.Drawing.Size(877, 427);
             this.dgWorkbook.TabIndex = 0;
             // 
+            // btnExportLO
+            // 
+            this.btnExportLO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportLO.Location = new System.Drawing.Point(555, 16);
+            this.btnExportLO.Name = "btnExportLO";
+            this.btnExportLO.Size = new System.Drawing.Size(151, 36);
+            this.btnExportLO.TabIndex = 2;
+            this.btnExportLO.Text = "Export LO";
+            this.btnExportLO.UseVisualStyleBackColor = true;
+            this.btnExportLO.Click += new System.EventHandler(this.btnExportLO_Click);
+            // 
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -143,33 +174,6 @@
             this.tpLanguage.Text = "Language tools";
             this.tpLanguage.UseVisualStyleBackColor = true;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(891, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 544);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(891, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // btnExportLO
-            // 
-            this.btnExportLO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportLO.Location = new System.Drawing.Point(555, 16);
-            this.btnExportLO.Name = "btnExportLO";
-            this.btnExportLO.Size = new System.Drawing.Size(151, 36);
-            this.btnExportLO.TabIndex = 2;
-            this.btnExportLO.Text = "Export LO";
-            this.btnExportLO.UseVisualStyleBackColor = true;
-            this.btnExportLO.Click += new System.EventHandler(this.btnExportLO_Click);
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -202,6 +206,18 @@
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
+            // rbLatin
+            // 
+            this.rbLatin.AutoSize = true;
+            this.rbLatin.Location = new System.Drawing.Point(167, 29);
+            this.rbLatin.Name = "rbLatin";
+            this.rbLatin.Size = new System.Drawing.Size(67, 18);
+            this.rbLatin.TabIndex = 1;
+            this.rbLatin.TabStop = true;
+            this.rbLatin.Text = "to Latin";
+            this.rbLatin.UseVisualStyleBackColor = true;
+            this.rbLatin.CheckedChanged += new System.EventHandler(this.rbLatin_CheckedChanged);
+            // 
             // rbOriginal
             // 
             this.rbOriginal.AutoSize = true;
@@ -214,17 +230,115 @@
             this.rbOriginal.UseVisualStyleBackColor = true;
             this.rbOriginal.CheckedChanged += new System.EventHandler(this.rbOriginal_CheckedChanged);
             // 
-            // rbLatin
+            // tpDtoToPoco
             // 
-            this.rbLatin.AutoSize = true;
-            this.rbLatin.Location = new System.Drawing.Point(167, 29);
-            this.rbLatin.Name = "rbLatin";
-            this.rbLatin.Size = new System.Drawing.Size(67, 18);
-            this.rbLatin.TabIndex = 1;
-            this.rbLatin.TabStop = true;
-            this.rbLatin.Text = "to Latin";
-            this.rbLatin.UseVisualStyleBackColor = true;
-            this.rbLatin.CheckedChanged += new System.EventHandler(this.rbLatin_CheckedChanged);
+            this.tpDtoToPoco.BackColor = System.Drawing.Color.Honeydew;
+            this.tpDtoToPoco.Controls.Add(this.splitContainer2);
+            this.tpDtoToPoco.Location = new System.Drawing.Point(4, 23);
+            this.tpDtoToPoco.Name = "tpDtoToPoco";
+            this.tpDtoToPoco.Size = new System.Drawing.Size(883, 515);
+            this.tpDtoToPoco.TabIndex = 2;
+            this.tpDtoToPoco.Text = "Dto to Poco";
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.btnSaveData);
+            this.splitContainer2.Panel2.Controls.Add(this.btnChoose);
+            this.splitContainer2.Size = new System.Drawing.Size(883, 515);
+            this.splitContainer2.SplitterDistance = 434;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // rtbPoco
+            // 
+            this.rtbPoco.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbPoco.Location = new System.Drawing.Point(0, 0);
+            this.rtbPoco.Name = "rtbPoco";
+            this.rtbPoco.Size = new System.Drawing.Size(268, 434);
+            this.rtbPoco.TabIndex = 0;
+            this.rtbPoco.Text = "";
+            // 
+            // btnChoose
+            // 
+            this.btnChoose.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnChoose.Location = new System.Drawing.Point(728, 18);
+            this.btnChoose.Name = "btnChoose";
+            this.btnChoose.Size = new System.Drawing.Size(131, 30);
+            this.btnChoose.TabIndex = 0;
+            this.btnChoose.Text = "Choose a DataSet";
+            this.btnChoose.UseVisualStyleBackColor = true;
+            this.btnChoose.Click += new System.EventHandler(this.btnChoose_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(891, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 544);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(891, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // dataGrid1
+            // 
+            this.dataGrid1.DataMember = "dtAddresssBook";
+            this.dataGrid1.DataSource = this.dsTest1;
+            this.dataGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.dataGrid1.Location = new System.Drawing.Point(0, 0);
+            this.dataGrid1.Name = "dataGrid1";
+            this.dataGrid1.Size = new System.Drawing.Size(611, 434);
+            this.dataGrid1.TabIndex = 1;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.rtbPoco);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.dataGrid1);
+            this.splitContainer3.Size = new System.Drawing.Size(883, 434);
+            this.splitContainer3.SplitterDistance = 268;
+            this.splitContainer3.TabIndex = 2;
+            // 
+            // btnSaveData
+            // 
+            this.btnSaveData.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSaveData.Location = new System.Drawing.Point(517, 18);
+            this.btnSaveData.Name = "btnSaveData";
+            this.btnSaveData.Size = new System.Drawing.Size(131, 30);
+            this.btnSaveData.TabIndex = 1;
+            this.btnSaveData.Text = "Save Data";
+            this.btnSaveData.UseVisualStyleBackColor = true;
+            this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
+            // 
+            // dsTest1
+            // 
+            this.dsTest1.DataSetName = "dsTest";
+            this.dsTest1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // DashboardForm
             // 
@@ -240,6 +354,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DashboardForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.DashboardForm_Load);
             this.tcMain.ResumeLayout(false);
             this.tpExcel.ResumeLayout(false);
             this.splitContainerExcel.Panel1.ResumeLayout(false);
@@ -253,6 +368,17 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tpDtoToPoco.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dsTest1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,5 +401,13 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RadioButton rbLatin;
         private System.Windows.Forms.RadioButton rbOriginal;
+        private System.Windows.Forms.TabPage tpDtoToPoco;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.RichTextBox rtbPoco;
+        private System.Windows.Forms.Button btnChoose;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.DataGrid dataGrid1;
+        private System.Windows.Forms.Button btnSaveData;
+        private ClassLibraryUMT.dsTest dsTest1;
     }
 }
