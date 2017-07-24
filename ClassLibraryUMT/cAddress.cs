@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ClassLibraryUMT
 {
-    public class cAddress
+    public class ClassAddress
     {
-        public Int32 id { get; set; }
-        public String firstname { get; set; }
-        public String surname { get; set; }
-        public String address { get; set; }
-        public String phone { get; set; }
-        public DateTime birthday { get; set; }
+        public Int32 Id { get; set; }
+        public String Firstname { get; set; }
+        public String Surname { get; set; }
+        public String Address { get; set; }
+        public String Phone { get; set; }
+        public DateTime Birthday { get; set; }
     }
 }

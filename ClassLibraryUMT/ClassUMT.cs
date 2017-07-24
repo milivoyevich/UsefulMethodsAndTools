@@ -88,7 +88,7 @@ namespace ClassLibraryUMT
             {
                 var config = new MapperConfiguration(cfg =>
                 {
-                    cfg.CreateMap<T1, T2>();
+                    cfg.CreateMap<T1, T2>(MemberList.None);
                 });
                 config.AssertConfigurationIsValid();
                 var mapper = config.CreateMapper();
@@ -121,6 +121,15 @@ namespace ClassLibraryUMT
             objekat += "}" + Environment.NewLine;
 
             return objekat;
+        }
+
+        public static DataRow PocoToDtoData<T>(DataRow red, T objekat)
+        {
+            foreach(var info in typeof(T).GetProperties())
+            {
+                red[info.Name] = info.GetValue(objekat, null);
+            }
+            return red;
         }
     }
 
