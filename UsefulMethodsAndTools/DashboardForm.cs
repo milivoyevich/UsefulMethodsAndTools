@@ -32,7 +32,7 @@ namespace UsefulMethodsAndTools
                 {
                     switch (ofdExcel.SafeFileName.Substring(ofdExcel.SafeFileName.IndexOf(".") + 1).ToLower())
                     {
-                        case "xls":  ds = DataSetHelper.CreateDataSet(ofdExcel.FileName); break;
+                        case "xls":  //ds = DataSetHelper.CreateDataSet(ofdExcel.FileName); break;
                         case "xlsx": ds = ExcelImportExport.ImportExcelODBC(ofdExcel.FileName); break;
                         default:
                             Stream ss = File.OpenRead(ofdExcel.FileName);

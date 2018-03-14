@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ClassLibraryUMT</RootNamespace>
     <AssemblyName>ClassLibraryUMT</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -61,6 +61,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,7 +78,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsTest.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ExcelImportExport.cs" />
+    <Compile Include="Metode\ExcelImportExport.cs" />
+    <Compile Include="Metode\ExcelImport.cs" />
+    <Compile Include="Metode\exportToExcel.cs" />
+    <Compile Include="Metode\ExtMetode.cs" />
+    <Compile Include="Metode\TabelaLista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
