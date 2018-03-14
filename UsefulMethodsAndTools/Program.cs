@@ -16,7 +16,8 @@ namespace UsefulMethodsAndTools
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DashboardForm());
+            //Application.Run(new DashboardForm());
+            Application.Run(new TestForm());
         }
     }
 }
