@@ -134,6 +134,7 @@
     <None Include="packages.config" />
     <Content Include="Views\PlayGame\_LayoutPlay.cshtml" />
     <Content Include="Views\PlayGame\Index.cshtml" />
+    <Content Include="Views\PlayGame\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
