@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DbMemory" Class="dsMemoryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DbMemory.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DbMemoryConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.mem_korisnici" Member="mem_korisnicis">
+    <Type Name="mem_korisnici">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fullname" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.mem_rezultati" Member="mem_rezultatis">
+    <Type Name="mem_rezultati">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idKorisnika" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vreme" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pocetak" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="kraj" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
