@@ -11,6 +11,7 @@ namespace WebMemoryGame.Controllers
         // GET: PlayGame
         public ActionResult Index()
         {
+
             return View();
         }
     }

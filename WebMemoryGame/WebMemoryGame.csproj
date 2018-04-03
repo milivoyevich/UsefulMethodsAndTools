@@ -132,6 +132,8 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="packages.config" />
+    <Content Include="Views\PlayGame\_LayoutPlay.cshtml" />
+    <Content Include="Views\PlayGame\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -139,9 +141,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\PlayGame\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
