@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformsUMT", "UsefulMethod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryUMT", "ClassLibraryUMT\ClassLibraryUMT.csproj", "{307FFE71-4AD0-4A29-ADD3-B86E244252B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMemoryGame", "WebMemoryGame\WebMemoryGame.csproj", "{F7C3E333-3932-4220-A2E1-3F0C3D2CE831}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +23,15 @@ Global
 		{307FFE71-4AD0-4A29-ADD3-B86E244252B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{307FFE71-4AD0-4A29-ADD3-B86E244252B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{307FFE71-4AD0-4A29-ADD3-B86E244252B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7C3E333-3932-4220-A2E1-3F0C3D2CE831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7C3E333-3932-4220-A2E1-3F0C3D2CE831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7C3E333-3932-4220-A2E1-3F0C3D2CE831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7C3E333-3932-4220-A2E1-3F0C3D2CE831}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BFF7174-14A4-411C-906D-A2D30B66F252}
 	EndGlobalSection
 EndGlobal
