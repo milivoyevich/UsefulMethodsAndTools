@@ -1,9 +1,26 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Memory Game";
     Layout = "~/Views/PlayGame/_LayoutPlay.cshtml";
 }
-
-<h2>@ViewBag.Naslov</h2>
-@Html.ActionLink("Registruj se", "Register", "PlayGame");
-
+<div class="content">
+    <h2>@ViewBag.Naslov</h2>
+    @if (!ViewBag.Login)
+    {
+        @Html.ActionLink("Registruj se", "Register", "PlayGame");
+    }
+    else
+    {
+        <table>
+            @for (var i = 0; i < ViewBag.Nivo; i++)
+            {
+                <tr>
+                    @for (var j = 0; j < ViewBag.Nivo; j++)
+                    {
+                        <td><button>@((i * ViewBag.Nivo + j).ToString("00"))</button></td>
+                    }
+                </tr>
+            }
+        </table>
+    }
+</div>
