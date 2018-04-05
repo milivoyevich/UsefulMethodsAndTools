@@ -44,5 +44,11 @@ namespace WebMemoryGame.Controllers
             }
             return View();
         }
+        public ActionResult Logout()
+        {
+            Session["Login"] = null;  
+            
+            return RedirectToAction("Index");
+        }
     }
 }

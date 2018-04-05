@@ -116,6 +116,9 @@
   <ItemGroup>
     <Content Include="App_Data\DbMemory.mdf" />
     <Content Include="App_Data\dbMemory.sql" />
+    <Content Include="App_Data\DbMemory_log.ldf">
+      <DependentUpon>DbMemory.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>

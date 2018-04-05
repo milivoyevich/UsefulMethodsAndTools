@@ -7,10 +7,18 @@
     <h2>@ViewBag.Naslov</h2>
     @if (!ViewBag.Login)
     {
-        @Html.ActionLink("Registruj se", "Register", "PlayGame");
+        <p>
+            @Html.ActionLink("Registruj se", "Register", "PlayGame")
+        </p>
+        <p>
+            @Html.ActionLink("Loguj se", "Login", "PlayGame")
+        </p>
     }
     else
     {
+        <p>
+            @Html.ActionLink("Odjavi se", "Logout", "PlayGame")
+        </p>
         <table>
             @for (var i = 0; i < ViewBag.Nivo; i++)
             {
