@@ -2,9 +2,12 @@
 <html>
 <head>
     <title>@Page.Title</title>
+    @Styles.Render("~/Content/css")
+    
     @RenderSection("head", required: false)
 </head>
 <body>
     @RenderBody()
+    @Scripts.Render("~/Bundles/js")
 </body>
 </html>

@@ -8,24 +8,51 @@
     @if (!ViewBag.Login)
     {
         <p>
-            @Html.ActionLink("Registruj se", "Register", "PlayGame")
+            @Html.ActionLink("Региструј се", "Register", "PlayGame")
         </p>
         <p>
-            @Html.ActionLink("Loguj se", "Login", "PlayGame")
+            @Html.ActionLink("Пријави се", "Login", "PlayGame")
         </p>
     }
     else
     {
         <p>
-            @Html.ActionLink("Odjavi se", "Logout", "PlayGame")
+            @Html.ActionLink("Одајви се", "Logout", "PlayGame")
         </p>
+        if (ViewBag.Start)
+        {
+            <p>
+                <script>
+                    var interval;
+                    interval = setInterval(function () {
+                        console.log('test');
+                        $.get("./PlayGame/GameTimer", function (data) {
+                            console.log(data);
+                        });
+
+                    }, 1000);
+                </script>
+                @Html.ActionLink("Заустави игру", "StopGame", "PlayGame", new { onclick = "zaustaviIgru();" })
+               
+            </p>
+        }
+        else
+        {
+            <p>
+                <script>
+                    var interval;
+                    clearInterval(interval);
+                </script>
+                @Html.ActionLink("Почни игру", "StartGame", "PlayGame", new { onclick = "pokreniIgru();" })
+            </p>
+        }
         <table>
             @for (var i = 0; i < ViewBag.Nivo; i++)
             {
                 <tr>
                     @for (var j = 0; j < ViewBag.Nivo; j++)
                     {
-                        <td><button>@((i * ViewBag.Nivo + j).ToString("00"))</button></td>
+                        <td><button onclick="stisniDugme(this);">@((i * ViewBag.Nivo + j).ToString("00"))</button></td>
                     }
                 </tr>
             }

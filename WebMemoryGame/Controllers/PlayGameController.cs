@@ -14,7 +14,11 @@ namespace WebMemoryGame.Controllers
         {
             ViewBag.Naslov = "Memory Game";
             ViewBag.Nivo = 4;
-            if(Session["Login"]!=null && Convert.ToBoolean(Session["Login"]))
+
+            if (Session["Start"] == null) Session["Start"] = false;
+            ViewBag.Start = Session["Start"];
+
+            if (Session["Login"]!=null && Convert.ToBoolean(Session["Login"]))
             {
                 ViewBag.Login = true;
             }
@@ -46,9 +50,30 @@ namespace WebMemoryGame.Controllers
         }
         public ActionResult Logout()
         {
-            Session["Login"] = null;  
-            
+            Session["Login"] = null;
+            Session["Start"] = false;
+            Session["StartTime"] = null;
             return RedirectToAction("Index");
+        }
+
+        public ActionResult StartGame()
+        {
+            Session["Start"] = true;
+            Session["StartTime"] = DateTime.Now;
+            return RedirectToAction("Index");
+        }
+        public ActionResult StopGame()
+        {
+            Session["Start"] = false;
+            Session["StartTime"] = null;
+            return RedirectToAction("Index");
+        }
+         public ActionResult GameTimer()
+        {
+            var vreme = (DateTime.Now - Convert.ToDateTime(Session["StartTime"]));
+            var minuti = Math.Floor(vreme.TotalMinutes);
+            var sekundi = (vreme).TotalSeconds - minuti * 60;
+            return Content (minuti.ToString("00") + ":" + sekundi.ToString("00"));
         }
     }
 }

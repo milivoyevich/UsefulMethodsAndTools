@@ -119,7 +119,16 @@
     <Content Include="App_Data\DbMemory_log.ldf">
       <DependentUpon>DbMemory.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\Main.css" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-migrate-3.0.0.js" />
+    <Content Include="Scripts\jquery-migrate-3.0.0.min.js" />
+    <Content Include="Scripts\Main.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -145,11 +154,15 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Assets\Main.scss" />
+    <Content Include="Assets\Main.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\PlayGame\_LayoutPlay.cshtml" />
     <Content Include="Views\PlayGame\Index.cshtml" />
     <Content Include="Views\PlayGame\Register.cshtml" />
     <Content Include="Views\PlayGame\Login.cshtml" />
+    <Content Include="Scripts\Main.js.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -169,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Main.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

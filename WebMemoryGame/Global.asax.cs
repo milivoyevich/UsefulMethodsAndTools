@@ -19,7 +19,7 @@ namespace WebMemoryGame
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BoundleConfig.RegisterBundles(BundleTable.Bundles);
+            BoundleConfig.RegisterBundles(BundleTable.Bundles);      
         }
     }
 }
