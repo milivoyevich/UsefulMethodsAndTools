@@ -1,3 +1,21 @@
-﻿body {
-    background-color:beige;
+﻿$dugmeBoja: mediumpurple;
+$dugmeHover: rebeccapurple;
+
+body {
+    background-color: lavender;
+}
+.memBtn {
+    background-color: $dugmeBoja; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-weight:bold;
+}
+.memBtn:hover{
+    cursor:pointer;
+    background-color: $dugmeHover;
 }

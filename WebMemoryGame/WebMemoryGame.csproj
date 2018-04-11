@@ -121,6 +121,7 @@
     </Content>
     <Content Include="Assets\Main.css" />
     <Content Include="Global.asax" />
+    <Content Include="Assets\Main.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -144,6 +145,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMemory.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Kartica.cs" />
+    <Compile Include="Models\MemTabla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -154,7 +157,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Assets\Main.scss" />
-    <Content Include="Assets\Main.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\PlayGame\_LayoutPlay.cshtml" />
     <Content Include="Views\PlayGame\Index.cshtml" />

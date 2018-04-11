@@ -58,22 +58,46 @@ namespace WebMemoryGame.Controllers
 
         public ActionResult StartGame()
         {
-            Session["Start"] = true;
-            Session["StartTime"] = DateTime.Now;
+            if (Session["Login"] != null && Convert.ToBoolean(Session["Login"]))
+            {
+                kreirajNovuTabelu();
+                Session["Start"] = true;
+                Session["StartTime"] = DateTime.Now;
+            }
             return RedirectToAction("Index");
         }
         public ActionResult StopGame()
         {
-            Session["Start"] = false;
-            Session["StartTime"] = null;
+            zaustaviIgru();
             return RedirectToAction("Index");
         }
          public ActionResult GameTimer()
         {
             var vreme = (DateTime.Now - Convert.ToDateTime(Session["StartTime"]));
             var minuti = Math.Floor(vreme.TotalMinutes);
-            var sekundi = (vreme).TotalSeconds - minuti * 60;
-            return Content (minuti.ToString("00") + ":" + sekundi.ToString("00"));
+            var odgovor = string.Empty;
+            if (minuti >= 10)
+            {
+                zaustaviIgru();
+                odgovor = "STOP";
+            }
+            else
+            {
+                var sekundi = (vreme).TotalSeconds - minuti * 60;
+                odgovor = minuti.ToString("00") + ":" + sekundi.ToString("00");
+            }
+            return Content (odgovor);
+        }
+        private MemTabla kreirajNovuTabelu()
+        {
+            var lok_tabla = new MemTabla();
+
+            return lok_tabla;
+        }
+        private void zaustaviIgru()
+        {
+            Session["Start"] = false;
+            Session["StartTime"] = null;
         }
     }
 }

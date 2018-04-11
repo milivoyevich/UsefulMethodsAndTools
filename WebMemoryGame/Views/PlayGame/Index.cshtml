@@ -17,33 +17,41 @@
     else
     {
         <p>
-            @Html.ActionLink("Одајви се", "Logout", "PlayGame")
+            @Html.ActionLink("Одјави се", "Logout", "PlayGame")
+        </p>
+        <p>
+            @Html.Label("lblVreme", "Протекло време")
+            @Html.Label("TimeOfGame", "00:00", new { id = "lblTOG" })
         </p>
         if (ViewBag.Start)
         {
-            <p>
-                <script>
-                    var interval;
-                    interval = setInterval(function () {
-                        console.log('test');
-                        $.get("./PlayGame/GameTimer", function (data) {
-                            console.log(data);
-                        });
+        <p>
+            @Html.ActionLink("Заустави игру", "StopGame", "PlayGame", new {@*onclick = "zaustaviIgru();"*@})
+            
+            <script>
+                var interval;
+                interval = setInterval(function () {
+                    $.get("./PlayGame/GameTimer", function (data) {
+                        if (data ==="STOP") {
+                            window.location.reload();
+                        }
+                        else {
+                            $("#lblTOG").html(data);
+                        }
+                    });
 
-                    }, 1000);
-                </script>
-                @Html.ActionLink("Заустави игру", "StopGame", "PlayGame", new { onclick = "zaustaviIgru();" })
-               
-            </p>
+                }, 1000);
+            </script>
+        </p>
         }
         else
         {
             <p>
                 <script>
                     var interval;
-                    clearInterval(interval);
+                    clearInterval(interval);                  
                 </script>
-                @Html.ActionLink("Почни игру", "StartGame", "PlayGame", new { onclick = "pokreniIgru();" })
+                @Html.ActionLink("Почни игру", "StartGame", "PlayGame", new { @*onclick = "pokreniIgru();"*@ })
             </p>
         }
         <table>
@@ -52,7 +60,7 @@
                 <tr>
                     @for (var j = 0; j < ViewBag.Nivo; j++)
                     {
-                        <td><button onclick="stisniDugme(this);">@((i * ViewBag.Nivo + j).ToString("00"))</button></td>
+                        <td><button class="memBtn" id="btn_@((i * ViewBag.Nivo + j).ToString("00"))" onclick="stisniDugme(this);">*</button></td>
                     }
                 </tr>
             }
