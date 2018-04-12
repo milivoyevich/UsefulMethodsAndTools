@@ -25,45 +25,12 @@
         </p>
         if (ViewBag.Start)
         {
-        <p>
-            @Html.ActionLink("Заустави игру", "StopGame", "PlayGame", new {@*onclick = "zaustaviIgru();"*@})
-            
-            <script>
-                var interval;
-                interval = setInterval(function () {
-                    $.get("./PlayGame/GameTimer", function (data) {
-                        if (data ==="STOP") {
-                            window.location.reload();
-                        }
-                        else {
-                            $("#lblTOG").html(data);
-                        }
-                    });
-
-                }, 1000);
-            </script>
-        </p>
+            @Html.Partial("GamePartial", null, ViewData)
         }
         else
         {
-            <p>
-                <script>
-                    var interval;
-                    clearInterval(interval);                  
-                </script>
-                @Html.ActionLink("Почни игру", "StartGame", "PlayGame", new { @*onclick = "pokreniIgru();"*@ })
-            </p>
+            @Html.Partial("IntroPartial", null, ViewData)
+
         }
-        <table>
-            @for (var i = 0; i < ViewBag.Nivo; i++)
-            {
-                <tr>
-                    @for (var j = 0; j < ViewBag.Nivo; j++)
-                    {
-                        <td><button class="memBtn" id="btn_@((i * ViewBag.Nivo + j).ToString("00"))" onclick="stisniDugme(this);">*</button></td>
-                    }
-                </tr>
-            }
-        </table>
     }
 </div>

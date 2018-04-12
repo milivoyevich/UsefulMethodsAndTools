@@ -165,6 +165,8 @@
     <Content Include="Scripts\Main.js.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\PlayGame\GamePartial.cshtml" />
+    <Content Include="Views\PlayGame\IntroPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

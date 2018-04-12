@@ -1,0 +1,19 @@
+﻿<p>
+    <script>
+                    var interval;
+                    clearInterval(interval);
+    </script>
+    @Html.ActionLink("Почни игру", "StartGame", "PlayGame", new
+    {@*onclick = "pokreniIgru();"*@})
+</p>
+<table>
+    @for (var i = 0; i < ViewBag.Nivo; i++)
+    {
+        <tr>
+            @for (var j = 0; j < ViewBag.Nivo; j++)
+            {
+                <td><button class="memBtn" id="btn_@((i * ViewBag.Nivo + j).ToString("00"))" onclick="stisniDugme(this);">*</button></td>
+            }
+        </tr>
+    }
+</table>
