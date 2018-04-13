@@ -1,5 +1,8 @@
 body {
-  background-color: lavender; }
+  background-color: lavender;
+  margin: auto;
+  width: 80em;
+  padding-top: 5em; }
 
 .memBtn {
   background-color: mediumpurple;
@@ -16,5 +19,9 @@ body {
 .memBtn:hover {
   cursor: pointer;
   background-color: rebeccapurple; }
+
+.siteLogo {
+  float: left;
+  width: 50px; }
 
 /*# sourceMappingURL=Main.css.map */

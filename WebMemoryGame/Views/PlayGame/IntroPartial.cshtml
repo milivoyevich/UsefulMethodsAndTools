@@ -1,8 +1,4 @@
 ﻿<p>
-    <script>
-                    var interval;
-                    clearInterval(interval);
-    </script>
     @Html.ActionLink("Почни игру", "StartGame", "PlayGame", new
     {@*onclick = "pokreniIgru();"*@})
 </p>
@@ -17,3 +13,25 @@
         </tr>
     }
 </table>
+<script>
+    var interval;
+    clearInterval(interval);
+
+    setInterval(function () {
+        var i = Math.floor(Math.random() * 4 * 4);
+        var dugme = $('#btn_' + pad(i, 2));
+        var boja = dugme.css("background-color");
+        if (Math.floor(Math.random() * 2) === 1) {
+            dugme.css("background-color", "rebeccapurple");
+        }
+        else {
+            dugme.css("background-color", "mediumpurple");
+        }      
+    }, 300);
+
+    function pad(num, size) {
+        var s = num + "";
+        while (s.length < size) s = "0" + s;
+        return s;
+    }
+</script>

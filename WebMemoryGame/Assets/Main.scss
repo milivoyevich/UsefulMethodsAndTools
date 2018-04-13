@@ -3,6 +3,9 @@ $dugmeHover: rebeccapurple;
 
 body {
     background-color: lavender;
+    margin:auto;
+    width: 80em;
+    padding-top:5em;
 }
 .memBtn {
     background-color: $dugmeBoja; /* Green */
@@ -18,4 +21,8 @@ body {
 .memBtn:hover{
     cursor:pointer;
     background-color: $dugmeHover;
+}
+.siteLogo {
+    float:left;
+    width:50px;
 }

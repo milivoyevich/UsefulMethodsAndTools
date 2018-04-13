@@ -119,6 +119,7 @@
     <Content Include="App_Data\DbMemory_log.ldf">
       <DependentUpon>DbMemory.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\imgs\stellar8-2.png" />
     <Content Include="Assets\Main.css" />
     <Content Include="Global.asax" />
     <Content Include="Assets\Main.css.map" />

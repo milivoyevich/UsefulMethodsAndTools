@@ -12,7 +12,7 @@ namespace WebMemoryGame.Controllers
         // GET: PlayGame
         public ActionResult Index()
         {
-            ViewBag.Naslov = "Memory Game";
+            ViewBag.Naslov = "Stellar 8 logic game";
             ViewBag.Nivo = 4;
 
             if (Session["Start"] == null) Session["Start"] = false;
@@ -31,7 +31,8 @@ namespace WebMemoryGame.Controllers
 
         public ActionResult Register(mem_korisnici MK)
         {
-           
+            ViewBag.Naslov = "Stellar 8 logic game";
+
             if (MK.email!=null)
             {
                 var errorNum = ModelState.Count;
@@ -41,6 +42,8 @@ namespace WebMemoryGame.Controllers
         }
         public ActionResult Login(mem_korisnici MK)
         {
+            ViewBag.Naslov = "Stellar 8 logic game";
+
             if (MK.username != null)
             {
                 Session["Login"] = true;
